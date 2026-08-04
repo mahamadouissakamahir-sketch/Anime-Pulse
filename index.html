@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AnimePulse — Nouveautés anime en temps réel</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#060a16">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="app-header">
+    <div class="logo">Anime<span class="pulse">Pulse</span></div>
+    <button class="header-icon-btn" onclick="showTab('support')">🩷</button>
+  </header>
+
+  <div class="content">
+
+    <!-- ============ ACCUEIL ============ -->
+    <section id="view-home" class="view active">
+      <div class="ad-slot" id="ad-slot-home">Emplacement publicitaire</div>
+
+      <div class="section-title"><span class="dot"></span>À venir prochainement</div>
+      <p class="section-sub">Les prochaines sorties annoncées.</p>
+      <div id="upcoming-list" class="hscroll"><p class="loading">Chargement...</p></div>
+
+      <div class="section-title"><span class="dot"></span>Cette semaine</div>
+      <p class="section-sub">Épisodes à venir, jour par jour.</p>
+      <div id="schedule-list"><p class="loading">Chargement...</p></div>
+
+      <div class="section-title"><span class="dot"></span>Tendances</div>
+      <p class="section-sub">Les animes les plus populaires du moment.</p>
+      <div id="trending-grid" class="anime-grid"><p class="loading">Chargement...</p></div>
+    </section>
+
+    <!-- ============ RECHERCHE ============ -->
+    <section id="view-search" class="view">
+      <div class="search-bar-wrap">
+        <input type="text" id="search-input" placeholder="Chercher un anime ou un manga...">
+      </div>
+      <div class="search-type-tabs">
+        <button class="search-type-tab active" data-type="ANIME" onclick="setSearchType('ANIME')">Anime</button>
+        <button class="search-type-tab" data-type="MANGA" onclick="setSearchType('MANGA')">Manga</button>
+      </div>
+      <div id="search-results" class="anime-grid">
+        <p class="empty-state">Tape un nom pour commencer.</p>
+      </div>
+    </section>
+
+    <!-- ============ SOUTENIR ============ -->
+    <section id="view-support" class="view">
+      <div class="support-hero">
+        <div class="glow-icon">🩷</div>
+        <h2>Soutenir AnimePulse</h2>
+        <p class="section-sub">
+          Cette app est gratuite et le restera. Si elle te fait gagner du temps<br>
+          ou te fait plaisir, un petit coup de pouce aide énormément à<br>
+          continuer à l'améliorer. Merci 🙏
+        </p>
+      </div>
+      <div class="support-methods" id="support-methods-list"></div>
+    </section>
+
+    <!-- ============ PROFIL ============ -->
+    <section id="view-profile" class="view">
+      <div class="profile-hero">
+        <div class="profile-avatar-big">🍥</div>
+        <h2>Mon profil</h2>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box"><div class="num" id="profile-fav-count">0</div><div class="label">Favoris</div></div>
+        <div class="stat-box"><div class="num" id="profile-notif-count">0</div><div class="label">Alertes actives</div></div>
+      </div>
+
+      <div class="section-title" style="margin-top:6px;"><span class="dot"></span>Notifications</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Alertes activées</div>
+          <div class="settings-row-sub">Vérifie les nouveaux épisodes à l'ouverture de l'app</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="global-notif-toggle">
+          <span class="switch-track"></span>
+        </label>
+      </div>
+
+      <div class="section-title"><span class="dot"></span>Mes favoris</div>
+      <div id="favorites-list"><p class="empty-state">Aucun favori pour l'instant.</p></div>
+    </section>
+
+    <!-- ============ FICHE DÉTAIL ============ -->
+    <section id="view-detail" class="view">
+      <button class="icon-btn back-btn" onclick="goBackFromDetail()">← Retour</button>
+      <div id="detail-content"><p class="loading">Chargement...</p></div>
+    </section>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="home" onclick="showTab('home')"><span class="nav-icon">🏠</span>Accueil</button>
+    <button class="nav-btn" data-tab="search" onclick="showTab('search')"><span class="nav-icon">🔍</span>Recherche</button>
+    <button class="nav-btn" data-tab="support" onclick="showTab('support')"><span class="nav-icon">🩷</span>Soutenir</button>
+    <button class="nav-btn" data-tab="profile" onclick="showTab('profile')"><span class="nav-icon">👤</span>Profil</button>
+  </nav>
+
+  <div id="toast"></div>
+</div>
+
+<script src="monetization-config.js"></script>
+<script src="icon-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
